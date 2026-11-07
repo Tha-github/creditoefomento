@@ -1,0 +1,30 @@
+.default {
+  padding-block: var(--section-space);
+}
+
+.compact {
+  padding-block: var(--section-space-compact);
+}
+
+.divider {
+  border-top: var(--border-hairline);
+}
+
+/* Cada tonalidade redefine a superfície para os cards contrastarem com o fundo. */
+.base {
+  --color-surface: var(--color-black-soft);
+
+  background-color: var(--color-black);
+}
+
+.soft {
+  --color-surface: var(--color-graphite);
+
+  background-color: var(--color-black-soft);
+}
+
+.graphite {
+  --color-surface: var(--color-black-soft);
+
+  background-color: var(--color-graphite);
+}

@@ -1,0 +1,212 @@
+/*
+ * Mobile: a imagem ocupa o topo e funde-se no preto; o texto sobe sobre ela.
+ * Desktop: a imagem ocupa a direita, sangrando até a borda, e o título avança sobre ela.
+ */
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: clamp(13rem, 34svh, 22rem) var(--space-12);
+  background-color: var(--color-background);
+}
+
+.visual {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: -1;
+  height: clamp(22rem, 60svh, 38rem);
+  overflow: hidden;
+}
+
+/* Iluminação quente e discreta sobre a fotografia monocromática. */
+.visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(70% 60% at 70% 25%, var(--color-glow), transparent 75%);
+  mix-blend-mode: soft-light;
+}
+
+.visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to bottom,
+    var(--color-scrim) 0%,
+    transparent 24%,
+    var(--color-scrim-strong) 52%,
+    var(--color-background) 88%
+  );
+}
+
+.picture {
+  display: block;
+  height: 100%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Só no desktop: sobre o recorte mobile, mais fechado, a marca vira ruído. */
+.markWrap {
+  display: none;
+}
+
+.copy {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.highlight {
+  display: block;
+  color: var(--color-accent);
+}
+
+/* Botões empilhados e com largura total: mais confortáveis para o polegar. */
+.actions {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.actions a {
+  width: 100%;
+  padding-inline: var(--space-4);
+}
+
+@media (min-width: 40em) {
+  .copy {
+    max-width: 40rem;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .actions a {
+    width: auto;
+    padding-inline: var(--space-8);
+  }
+}
+
+@media (min-width: 60em) {
+  .hero {
+    display: flex;
+    align-items: center;
+    min-height: min(max(44rem, 100svh), 72rem);
+    padding-block: calc(var(--header-height) + var(--space-12)) var(--space-16);
+  }
+
+  .visual {
+    inset: 0 0 0 auto;
+    width: 62%;
+    height: auto;
+  }
+
+  .visual::after {
+    background:
+      linear-gradient(
+        to right,
+        var(--color-background) 0%,
+        var(--hero-fade-color, var(--color-scrim-strong)) var(--hero-fade-stop, 38%),
+        transparent 72%
+      ),
+      linear-gradient(
+        to bottom,
+        var(--color-scrim) 0%,
+        transparent 22%,
+        transparent 76%,
+        var(--color-background) 100%
+      );
+  }
+
+  .markWrap {
+    position: absolute;
+    z-index: -1;
+    display: block;
+    right: max(var(--container-gutter), calc((100% - var(--container-default)) / 2 + var(--container-gutter)));
+    bottom: var(--space-16);
+    width: clamp(9rem, 13vw, 14rem);
+  }
+
+  .copy {
+    max-width: 52rem;
+  }
+
+  .copy p:last-child {
+    max-width: 36rem;
+  }
+}
+
+/* Com mais largura o texto avança menos sobre a foto, e a torre pode aparecer mais. */
+@media (min-width: 80em) {
+  .visual {
+    --hero-fade-color: var(--color-scrim);
+    --hero-fade-stop: 32%;
+  }
+}
+
+/* A animação só existe com movimento permitido: sem ela, tudo já nasce no estado final. */
+@media (prefers-reduced-motion: no-preference) {
+  .copy header > *,
+  .actions {
+    animation: rise var(--duration-entrance) var(--ease-standard) both;
+  }
+
+  .copy header > :nth-child(2) {
+    animation-delay: 80ms;
+  }
+
+  .copy header > :nth-child(3) {
+    animation-delay: 200ms;
+  }
+
+  .actions {
+    animation-delay: 320ms;
+  }
+
+  .image {
+    animation: settle 1800ms var(--ease-standard) both;
+  }
+
+  .markWrap {
+    animation: appear 1200ms var(--ease-standard) 400ms both;
+  }
+
+  .mark {
+    animation: drift 14s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes drift {
+  to {
+    transform: translateY(-0.5rem);
+  }
+}

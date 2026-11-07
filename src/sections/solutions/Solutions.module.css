@@ -1,0 +1,57 @@
+.featured {
+  margin-top: var(--space-12);
+}
+
+/*
+ * Larguras variadas, em vez de seis cards iguais:
+ * tablet: 2 colunas, com o primeiro e o último ocupando a linha;
+ * desktop: 7 + 5, depois 4 + 4 + 4, depois o card horizontal em largura total.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.note {
+  max-width: var(--measure);
+  margin-top: var(--space-8);
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 40em) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+    margin-top: var(--space-5);
+  }
+
+  .card:first-child,
+  .card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 60em) {
+  .featured {
+    margin-top: var(--space-16);
+  }
+
+  .grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+
+  .card {
+    grid-column: span 4;
+  }
+
+  .card:nth-child(1) {
+    grid-column: span 7;
+  }
+
+  .card:nth-child(2) {
+    grid-column: span 5;
+  }
+}

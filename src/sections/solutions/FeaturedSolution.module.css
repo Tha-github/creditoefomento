@@ -1,0 +1,79 @@
+.featured {
+  position: relative;
+  display: grid;
+  gap: var(--space-12);
+  padding: var(--space-10) var(--space-6);
+  border: var(--border-hairline);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-black);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Fio dourado: marca o produto principal e não se repete nos demais cards em repouso. */
+.featured::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: var(--space-24);
+  height: 1px;
+  background-color: var(--color-accent);
+}
+
+.text {
+  display: grid;
+  gap: var(--space-6);
+  align-content: start;
+  justify-items: start;
+}
+
+.statement {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+
+.highlight {
+  display: block;
+  color: var(--color-accent);
+}
+
+.description {
+  max-width: var(--measure);
+  font-size: var(--text-lg);
+}
+
+.cta {
+  width: 100%;
+  margin-top: var(--space-2);
+  padding-inline: var(--space-4);
+}
+
+.aside {
+  display: grid;
+  gap: var(--space-8);
+  align-content: end;
+}
+
+@media (min-width: 40em) {
+  .featured {
+    padding: var(--space-12) var(--space-10);
+  }
+
+  .cta {
+    width: auto;
+    padding-inline: var(--space-8);
+  }
+}
+
+@media (min-width: 60em) {
+  .featured {
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-16);
+    padding: var(--space-16);
+  }
+}

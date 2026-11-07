@@ -1,0 +1,9 @@
+.accordion {
+  margin-top: var(--space-12);
+}
+
+@media (min-width: 60em) {
+  .accordion {
+    margin-top: var(--space-16);
+  }
+}

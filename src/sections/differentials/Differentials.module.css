@@ -1,0 +1,72 @@
+.pillars {
+  display: grid;
+  margin-top: var(--space-12);
+}
+
+.pillar {
+  display: grid;
+  grid-template-columns: var(--space-12) minmax(0, 1fr);
+  gap: var(--space-2) 0;
+  padding-block: var(--space-6) var(--space-8);
+  border-top: var(--border-hairline);
+}
+
+.order {
+  grid-row: 1 / span 2;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  line-height: 1.9;
+}
+
+.title,
+.pillar p {
+  grid-column: 2;
+}
+
+@media (min-width: 40em) {
+  .pillars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-8);
+    margin-top: var(--space-16);
+  }
+
+  .pillar {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-4);
+    align-content: start;
+  }
+
+  .order {
+    grid-row: auto;
+    margin-bottom: var(--space-3);
+  }
+
+  .title,
+  .pillar p {
+    grid-column: auto;
+  }
+}
+
+/* Colunas em degraus, subindo da esquerda para a direita: sugerem progressão sem usar números. */
+@media (min-width: 60em) {
+  .pillars {
+    --step: var(--space-10);
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .pillar:nth-child(1) {
+    margin-top: calc(var(--step) * 3);
+  }
+
+  .pillar:nth-child(2) {
+    margin-top: calc(var(--step) * 2);
+  }
+
+  .pillar:nth-child(3) {
+    margin-top: var(--step);
+  }
+}

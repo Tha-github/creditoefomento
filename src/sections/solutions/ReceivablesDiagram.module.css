@@ -1,0 +1,55 @@
+.diagram {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.line,
+.arc,
+.ring {
+  stroke-width: 1px;
+  vector-effect: non-scaling-stroke;
+}
+
+.line {
+  stroke: var(--color-border-strong);
+}
+
+.arc,
+.ring {
+  stroke: var(--color-accent);
+}
+
+.dot {
+  fill: var(--color-accent);
+}
+
+/* Posições equivalentes às do desenho: "hoje" em 60/480 e o documento central em 290/480. */
+.labels {
+  position: relative;
+  height: 1.5rem;
+  font-size: var(--text-xs);
+}
+
+.today,
+.future {
+  position: absolute;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.today {
+  left: 12.5%;
+  color: var(--color-accent);
+  font-weight: var(--weight-semibold);
+}
+
+.future {
+  left: 60.4%;
+  color: var(--color-text-subtle);
+}

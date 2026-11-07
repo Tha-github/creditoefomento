@@ -1,0 +1,254 @@
+/* Capa */
+.coverGrid {
+  display: grid;
+  gap: var(--space-16);
+}
+
+.coverText {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.coverMark {
+  max-width: 14rem;
+}
+
+.index {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-6);
+}
+
+.index a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 60em) {
+  .coverGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(14rem, 22rem);
+    align-items: end;
+  }
+
+  .coverMark {
+    max-width: none;
+  }
+}
+
+/* Blocos */
+.blocks {
+  display: grid;
+  gap: var(--space-12);
+  margin-top: var(--space-16);
+}
+
+.block {
+  display: grid;
+  gap: var(--space-5);
+  align-content: start;
+}
+
+.blockTitle {
+  color: var(--color-text-subtle);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-regular);
+  letter-spacing: normal;
+}
+
+.token {
+  color: var(--color-text-subtle);
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-size: var(--text-xs);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.linkExamples {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+}
+
+@media (min-width: 60em) {
+  .blocks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-16) var(--space-12);
+  }
+}
+
+/* Cores */
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-4);
+  margin-top: var(--space-16);
+}
+
+.swatch {
+  display: grid;
+  gap: var(--space-1);
+  align-content: start;
+  font-size: var(--text-sm);
+}
+
+.swatchColor {
+  aspect-ratio: 4 / 3;
+  margin-bottom: var(--space-2);
+  border: var(--border-hairline);
+  border-radius: var(--radius-xs);
+}
+
+.swatchHex {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-semibold);
+}
+
+@media (min-width: 40em) {
+  .swatches {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 60em) {
+  .swatches {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: var(--space-10) var(--space-5);
+  }
+}
+
+/* Tipografia */
+.typeScale {
+  margin-top: var(--space-16);
+}
+
+.typeRow {
+  display: grid;
+  gap: var(--space-2);
+  padding-block: var(--space-5);
+  border-top: var(--border-hairline);
+}
+
+.typeHeading {
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+@media (min-width: 60em) {
+  .typeRow {
+    grid-template-columns: 11rem minmax(0, 1fr);
+    align-items: baseline;
+    gap: var(--space-6);
+  }
+}
+
+/* Cards */
+.cards {
+  margin-top: var(--space-16);
+}
+
+/* Fundamentos */
+.spaces {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.spaceRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.spaceRow .token {
+  flex-shrink: 0;
+  width: 5.5rem;
+}
+
+.spaceBar {
+  height: var(--space-3);
+  background-color: var(--color-gold-dark);
+}
+
+.samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+}
+
+.sample {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.sampleBox {
+  display: block;
+  width: 5.5rem;
+  height: 5.5rem;
+  border: var(--border-hairline);
+  background-color: var(--color-graphite);
+}
+
+/* Sombra preta só aparece sobre um fundo mais claro que ela. */
+.shadowStage {
+  padding: var(--space-6);
+  background-color: var(--color-graphite);
+}
+
+.containers {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.containerBar {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: var(--border-hairline);
+  font-size: var(--text-sm);
+}
+
+.containerBar:nth-child(1) {
+  width: 60%;
+  min-width: min(100%, 15rem);
+}
+
+.containerBar:nth-child(2) {
+  width: 80%;
+  min-width: min(100%, 15rem);
+}
+
+/* Elementos visuais */
+.elements {
+  display: grid;
+  gap: var(--space-12);
+  margin-top: var(--space-16);
+}
+
+.element {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 18rem;
+  font-size: var(--text-sm);
+}
+
+.elementDetails {
+  display: grid;
+  gap: var(--space-8);
+  align-content: start;
+}
+
+@media (min-width: 60em) {
+  .elements {
+    grid-template-columns: minmax(0, 18rem) minmax(0, 18rem) minmax(0, 1fr);
+    gap: var(--space-16);
+  }
+}

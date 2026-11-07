@@ -1,0 +1,145 @@
+.panel {
+  position: relative;
+  display: grid;
+  gap: var(--space-6);
+  padding: var(--space-8) var(--space-5);
+  border: var(--border-hairline);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-graphite);
+  box-shadow: var(--shadow-lg);
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: var(--space-24);
+  height: 1px;
+  background-color: var(--color-accent);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* Fora da tela, e não `display: none`: robôs costumam ignorar campos ocultos dessa forma. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.privacy {
+  border-block: var(--border-hairline);
+  font-size: var(--text-sm);
+}
+
+.privacySummary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 2.75rem;
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+}
+
+.privacyIcon {
+  flex-shrink: 0;
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+.privacy[open] .privacyIcon {
+  transform: rotate(180deg);
+}
+
+.privacyList {
+  display: grid;
+  gap: var(--space-3);
+  padding-bottom: var(--space-4);
+}
+
+.privacyList dt {
+  color: var(--color-text);
+  font-weight: var(--weight-medium);
+}
+
+.privacyList dd {
+  margin: 0;
+}
+
+.problem {
+  display: grid;
+  gap: var(--space-1);
+  justify-items: start;
+  padding: var(--space-4);
+  border-left: 2px solid var(--color-error);
+  background-color: var(--color-black-soft);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+}
+
+.footer {
+  display: grid;
+}
+
+/* Sucesso */
+.success {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  padding-block: var(--space-6);
+}
+
+.successIcon {
+  color: var(--color-accent);
+}
+
+.successTitle {
+  font-size: var(--text-2xl);
+  letter-spacing: var(--tracking-snug);
+}
+
+.successText {
+  max-width: var(--measure);
+  color: var(--color-text);
+  font-size: var(--text-lg);
+}
+
+.successNote {
+  max-width: var(--measure);
+  margin-bottom: var(--space-4);
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 40em) {
+  .panel {
+    padding: var(--space-10);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-8);
+  }
+
+  .full {
+    grid-column: 1 / -1;
+  }
+
+  .footer {
+    justify-items: start;
+  }
+}
+
+@media (min-width: 80em) {
+  .panel {
+    padding: var(--space-12);
+  }
+}

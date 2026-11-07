@@ -1,0 +1,110 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  border: 1px solid transparent;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-heading);
+  font-weight: var(--weight-semibold);
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard);
+}
+
+/* Tamanhos: a altura mínima garante área de toque adequada. */
+.md {
+  min-height: 3rem;
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-sm);
+}
+
+.lg {
+  min-height: 3.5rem;
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.icon {
+  flex-shrink: 0;
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+/* Primário: a ação principal de cada contexto. */
+.primary {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.primary:active {
+  background-color: var(--color-gold-dark);
+  color: var(--color-on-accent);
+}
+
+/* Secundário: presença discreta, sem competir com o primário. */
+.secondary {
+  border-color: var(--color-border-strong);
+  background-color: transparent;
+  color: var(--color-text);
+}
+
+.secondary:active {
+  border-color: var(--color-gold);
+  color: var(--color-text);
+}
+
+@media (hover: hover) {
+  .primary:hover {
+    background-color: var(--color-accent-hover);
+    color: var(--color-on-accent);
+  }
+
+  .secondary:hover {
+    border-color: var(--color-accent-hover);
+    color: var(--color-accent-hover);
+  }
+
+  .button:hover .icon {
+    transform: translateX(3px);
+  }
+}
+
+.loading,
+.loading:hover,
+.loading:active {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+  cursor: progress;
+}
+
+.spinner {
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2px solid currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 800ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button:disabled {
+  border-color: var(--color-border);
+  background-color: var(--color-graphite);
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}

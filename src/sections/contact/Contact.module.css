@@ -1,0 +1,40 @@
+.layout {
+  display: grid;
+  gap: var(--space-12);
+}
+
+.intro {
+  display: grid;
+  gap: var(--space-8);
+  align-content: start;
+}
+
+.channel {
+  padding-top: var(--space-5);
+  border-top: var(--border-hairline);
+}
+
+.channelLabel {
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+}
+
+.note {
+  max-width: 34ch;
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 60em) {
+  .layout {
+    grid-template-columns: 5fr 7fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  /* Acompanha a rolagem: o formulário é mais alto que a coluna de apresentação. */
+  .intro {
+    position: sticky;
+    top: calc(var(--header-height) + var(--space-8));
+  }
+}

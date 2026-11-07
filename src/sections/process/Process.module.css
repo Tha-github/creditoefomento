@@ -1,0 +1,161 @@
+/*
+ * Mobile e tablet: linha do tempo vertical, com o fio à esquerda.
+ * Desktop: linha do tempo horizontal, com o fio contínuo sobre as quatro colunas.
+ */
+.steps {
+  display: grid;
+  margin-top: var(--space-12);
+}
+
+.step {
+  position: relative;
+  padding: 0 0 var(--space-12) var(--space-8);
+}
+
+/* Fio dourado. */
+.step::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background-color: var(--color-accent);
+  transform-origin: top;
+}
+
+/* Marcador da etapa. */
+.step::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.number {
+  display: block;
+  /* Compensa o recuo lateral dos algarismos em tamanho grande, alinhando-os aos títulos. */
+  margin-bottom: var(--space-4);
+  margin-left: -0.05em;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-display);
+  font-weight: var(--weight-regular);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  font-variant-numeric: tabular-nums;
+}
+
+.content {
+  display: grid;
+  gap: var(--space-3);
+  max-width: var(--measure);
+}
+
+.title {
+  font-size: var(--text-xl);
+}
+
+.note {
+  max-width: var(--measure);
+  margin-top: var(--space-12);
+  color: var(--color-text-subtle);
+  font-size: var(--text-sm);
+}
+
+@media (min-width: 60em) {
+  .steps {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: var(--space-16);
+  }
+
+  .step,
+  .step:last-child {
+    padding: var(--space-8) var(--space-6) 0 0;
+  }
+
+  .step:last-child {
+    padding-right: 0;
+  }
+
+  .step::before {
+    right: 0;
+    bottom: auto;
+    width: auto;
+    height: 1px;
+    transform-origin: left;
+  }
+
+  .step::after {
+    top: -4px;
+    left: 0;
+  }
+
+  .number {
+    margin-bottom: var(--space-8);
+  }
+}
+
+/* A animação só existe com movimento permitido: sem ela, tudo já nasce no estado final. */
+@media (prefers-reduced-motion: no-preference) {
+  .step {
+    --line-hidden: scaleY(0);
+  }
+
+  .step::before {
+    transform: var(--line-hidden);
+    transition: transform 900ms var(--ease-standard) var(--delay, 0ms);
+  }
+
+  .step::after {
+    transform: scale(0);
+    transition: transform var(--duration-slow) var(--ease-standard) var(--delay, 0ms);
+  }
+
+  .number,
+  .content {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity var(--duration-entrance) var(--ease-standard) var(--delay, 0ms),
+      transform var(--duration-entrance) var(--ease-standard) var(--delay, 0ms);
+  }
+
+  .visible::before,
+  .visible::after {
+    transform: none;
+  }
+
+  .visible .number,
+  .visible .content {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* No desktop as quatro etapas entram juntas: o atraso faz o fio correr de uma para a outra. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 60em) {
+  .step {
+    --line-hidden: scaleX(0);
+  }
+
+  .step:nth-child(2) {
+    --delay: 220ms;
+  }
+
+  .step:nth-child(3) {
+    --delay: 440ms;
+  }
+
+  .step:nth-child(4) {
+    --delay: 660ms;
+  }
+}

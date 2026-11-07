@@ -1,0 +1,139 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-8);
+  height: 100%;
+  padding: var(--space-8) var(--space-6);
+  border: var(--border-hairline);
+  border-radius: var(--radius-xs);
+  background-color: var(--color-surface);
+  transition: border-color var(--duration-base) var(--ease-standard);
+}
+
+/* Fio dourado que surge no hover: único detalhe de cor além do ícone. */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: -1px -1px auto;
+  height: 1px;
+  background-color: var(--color-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-slow) var(--ease-standard);
+}
+
+.intro {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+}
+
+.badge {
+  margin-bottom: var(--space-4);
+}
+
+.title {
+  font-size: var(--text-xl);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+}
+
+.description {
+  font-size: var(--text-base);
+}
+
+.details {
+  display: grid;
+  gap: var(--space-6);
+}
+
+/* O link cobre todo o card, sem aninhar elementos interativos. */
+.stretched .action a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+@media (hover: hover) {
+  .card:hover {
+    border-color: var(--color-border-strong);
+  }
+
+  .card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .card:hover .badge {
+    border-color: var(--color-accent);
+  }
+}
+
+.badge {
+  transition: border-color var(--duration-base) var(--ease-standard);
+}
+
+@media (min-width: 60em) {
+  .wide {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: var(--space-16);
+  }
+
+  .wide .description {
+    max-width: var(--measure);
+  }
+
+  .wide .details {
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width: 40em) {
+  .card {
+    padding: var(--space-10) var(--space-8);
+  }
+}
+
+/* Destaque: reservado ao produto principal. */
+.featured {
+  grid-column: 1 / -1;
+  background-color: var(--color-graphite);
+  box-shadow: var(--shadow-md);
+}
+
+.featured::before {
+  right: auto;
+  width: var(--space-16);
+  transform: none;
+}
+
+.featured .title {
+  font-size: var(--text-3xl);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.featured .description {
+  font-size: var(--text-lg);
+}
+
+@media (hover: hover) {
+  .featured:hover::before {
+    transform: none;
+  }
+}
+
+@media (min-width: 60em) {
+  .featured {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--space-16);
+    padding: var(--space-16);
+  }
+
+  .featured .details {
+    align-self: end;
+  }
+}

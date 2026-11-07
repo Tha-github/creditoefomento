@@ -1,0 +1,55 @@
+.layout {
+  display: grid;
+  gap: var(--space-12);
+}
+
+/* Grade de fios: o fundo da lista aparece no vão de 1px entre os itens. */
+.items {
+  display: grid;
+  gap: 1px;
+  border-block: var(--border-hairline);
+  background-color: var(--color-border);
+}
+
+.item {
+  display: grid;
+  gap: var(--space-3);
+  align-content: start;
+  padding-block: var(--space-6);
+  background-color: var(--color-graphite);
+}
+
+.icon {
+  margin-bottom: var(--space-3);
+  color: var(--color-accent);
+}
+
+.title {
+  font-size: var(--text-lg);
+}
+
+@media (min-width: 40em) {
+  .items {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .item {
+    padding: var(--space-8) var(--space-6);
+  }
+
+  .item:nth-child(odd) {
+    padding-left: 0;
+  }
+
+  .item:nth-child(even) {
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 60em) {
+  .layout {
+    grid-template-columns: 4fr 8fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+}

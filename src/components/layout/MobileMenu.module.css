@@ -1,0 +1,92 @@
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-right: calc(var(--space-3) * -1);
+  border: 0;
+  border-radius: var(--radius-xs);
+  background: none;
+  color: var(--color-text);
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  padding: 0 var(--container-gutter) var(--space-8);
+  border: 0;
+  background-color: var(--color-black);
+  color: var(--color-text);
+}
+
+/* `display` só no estado aberto: fechado, o dialog precisa continuar oculto. */
+.menu[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Impede a página de rolar por trás do menu. */
+html:has(.menu[open]) {
+  overflow: hidden;
+}
+
+.top {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+}
+
+.nav {
+  flex-grow: 1;
+  padding-block: var(--space-8);
+}
+
+.item {
+  border-bottom: var(--border-hairline);
+}
+
+.item:first-child {
+  border-top: var(--border-hairline);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  min-height: 4.5rem;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-snug);
+  text-decoration: none;
+}
+
+.cta {
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .menu[open] {
+    animation: menu-in var(--duration-base) var(--ease-standard);
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+}

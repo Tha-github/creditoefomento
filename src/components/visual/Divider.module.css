@@ -1,0 +1,14 @@
+.divider {
+  height: 1px;
+  border: 0;
+}
+
+.line {
+  width: 100%;
+  background-color: var(--color-border);
+}
+
+.accent {
+  width: var(--space-16);
+  background-color: var(--color-accent);
+}

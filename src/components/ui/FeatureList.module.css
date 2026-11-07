@@ -1,0 +1,22 @@
+.list {
+  display: grid;
+}
+
+.item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding-block: var(--space-3);
+  border-top: var(--border-hairline);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+}
+
+.item::before {
+  content: '';
+  flex-shrink: 0;
+  width: var(--space-3);
+  height: 1px;
+  background-color: var(--color-accent);
+  transform: translateY(-0.25em);
+}

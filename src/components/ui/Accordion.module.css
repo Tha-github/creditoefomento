@@ -1,0 +1,82 @@
+.accordion {
+  border-bottom: var(--border-hairline);
+}
+
+.item {
+  border-top: var(--border-hairline);
+}
+
+.heading {
+  font-size: inherit;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  width: 100%;
+  min-height: 4.5rem;
+  padding: var(--space-5) 0;
+  border: 0;
+  background: none;
+  color: var(--color-text);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-snug);
+  text-align: left;
+  transition: color var(--duration-base) var(--ease-standard);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+.open .icon {
+  transform: rotate(45deg);
+}
+
+@media (hover: hover) {
+  .trigger:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+/* Grade de 0fr a 1fr: anima a altura sem precisar medi-la em JavaScript. */
+.panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows var(--duration-base) var(--ease-standard),
+    visibility var(--duration-base);
+}
+
+.open .panel {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+
+.panelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.answer {
+  display: grid;
+  gap: var(--space-3);
+  justify-items: start;
+  max-width: var(--measure);
+  padding-bottom: var(--space-6);
+  padding-right: var(--space-10);
+}
+
+@media (min-width: 40em) {
+  .trigger {
+    font-size: var(--text-xl);
+  }
+}

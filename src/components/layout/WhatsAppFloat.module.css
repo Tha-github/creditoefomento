@@ -1,0 +1,47 @@
+.float {
+  position: fixed;
+  right: max(var(--space-4), env(safe-area-inset-right));
+  bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  z-index: var(--z-float);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 50%;
+  background-color: var(--color-black);
+  box-shadow: var(--shadow-md);
+  color: var(--color-accent);
+  transition:
+    opacity var(--duration-base) var(--ease-standard),
+    visibility var(--duration-base),
+    border-color var(--duration-base) var(--ease-standard),
+    color var(--duration-base) var(--ease-standard);
+}
+
+/* `visibility` também o retira da navegação por teclado enquanto está oculto. */
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (hover: hover) {
+  .float:hover {
+    border-color: var(--color-accent-hover);
+    color: var(--color-accent-hover);
+  }
+}
+
+@media (min-width: 60em) {
+  .float {
+    right: var(--space-8);
+    bottom: var(--space-8);
+  }
+}
+
+@media print {
+  .float {
+    display: none;
+  }
+}
