@@ -20,7 +20,11 @@ export function FeaturedSolution({ className }: FeaturedSolutionProps) {
   const { statement, cta, ctaMessage } = solutionsContent.featured;
 
   return (
-    <article className={cx(styles.featured, className)} aria-labelledby="antecipacao-titulo">
+    <article
+      id={featuredProduct.id}
+      className={cx(styles.featured, className)}
+      aria-labelledby="antecipacao-titulo"
+    >
       <div className={styles.text}>
         <Eyebrow as="h3" id="antecipacao-titulo">
           {featuredProduct.name}

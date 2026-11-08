@@ -8,5 +8,6 @@ function subscribeToScroll(onChange: () => void) {
 /** Indica se a página rolou além do limite. Só provoca nova renderização quando o resultado muda. */
 export function useScrolled(threshold: number): boolean {
   const getSnapshot = useCallback(() => window.scrollY > threshold, [threshold]);
-  return useSyncExternalStore(subscribeToScroll, getSnapshot);
+  // No HTML pré-renderizado a página está no topo: a hidratação parte do mesmo estado.
+  return useSyncExternalStore(subscribeToScroll, getSnapshot, () => false);
 }

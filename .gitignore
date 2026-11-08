@@ -2,6 +2,7 @@
 node_modules
 dist
 dist-showcase
+dist-ssr
 *.tsbuildinfo
 
 # Credenciais e configuração local

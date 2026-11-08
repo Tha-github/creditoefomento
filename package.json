@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
     "build:showcase": "tsc -b && vite build --mode showcase",
     "preview": "vite preview",
     "preview:showcase": "vite preview --outDir dist-showcase",
     "typecheck": "tsc -b",
     "test": "vitest run",
+    "check": "npm run lint && npm run typecheck && npm test && npm audit",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -33,5 +34,8 @@
     "typescript-eslint": "^8.72.1",
     "vite": "^8.3.6",
     "vitest": "^5.1.0"
+  },
+  "overrides": {
+    "minimatch": "^11.0.5"
   }
 }

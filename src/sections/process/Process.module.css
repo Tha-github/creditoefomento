@@ -104,40 +104,48 @@
   }
 }
 
-/* A animação só existe com movimento permitido: sem ela, tudo já nasce no estado final. */
+/*
+ * A animação só existe com movimento permitido e com JavaScript (classe `js` no html):
+ * sem um dos dois, o conteúdo pré-renderizado já nasce no estado final, sempre visível.
+ * A transição fica só no estado visível: ao receber a classe `js`, o conteúdo pré-renderizado
+ * se oculta de imediato, sem animar a saída, e apenas a entrada é animada.
+ */
 @media (prefers-reduced-motion: no-preference) {
   .step {
     --line-hidden: scaleY(0);
   }
 
-  .step::before {
+  :global(.js) .step::before {
     transform: var(--line-hidden);
+  }
+
+  :global(.js) .step::after {
+    transform: scale(0);
+  }
+
+  :global(.js) .number,
+  :global(.js) .content {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  :global(.js) .visible::before {
+    transform: none;
     transition: transform 900ms var(--ease-standard) var(--delay, 0ms);
   }
 
-  .step::after {
-    transform: scale(0);
+  :global(.js) .visible::after {
+    transform: none;
     transition: transform var(--duration-slow) var(--ease-standard) var(--delay, 0ms);
   }
 
-  .number,
-  .content {
-    opacity: 0;
-    transform: translateY(1rem);
+  :global(.js) .visible .number,
+  :global(.js) .visible .content {
+    opacity: 1;
+    transform: none;
     transition:
       opacity var(--duration-entrance) var(--ease-standard) var(--delay, 0ms),
       transform var(--duration-entrance) var(--ease-standard) var(--delay, 0ms);
-  }
-
-  .visible::before,
-  .visible::after {
-    transform: none;
-  }
-
-  .visible .number,
-  .visible .content {
-    opacity: 1;
-    transform: none;
   }
 }
 

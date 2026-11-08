@@ -4,7 +4,10 @@ import type {
   ContactResponse,
 } from '@shared/contact/validation';
 
-const ENDPOINT = '/api/contact';
+import { withBase } from '@/utils/paths';
+
+/** Em hospedagem só estática, como o GitHub Pages, o endpoint não existe e o formulário informa que não enviou. */
+const ENDPOINT = withBase('api/contact');
 const TIMEOUT_MS = 20_000;
 
 /** Só existe `success` quando o servidor confirma o envio. Nenhum outro caminho leva a ele. */
@@ -30,7 +33,8 @@ export async function submitContact(payload: ContactPayload): Promise<ContactSub
     return { status: 'failed' };
   }
 
-  if (response.status === 404) return { status: 'unavailable' };
+  // Sem endpoint: 404 em hospedagem comum; 405 no GitHub Pages, que só serve arquivos.
+  if (response.status === 404 || response.status === 405) return { status: 'unavailable' };
 
   let body: ContactResponse;
   try {

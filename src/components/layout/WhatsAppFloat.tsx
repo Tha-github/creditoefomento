@@ -8,8 +8,11 @@ import { externalLinkHint, externalLinkProps } from '@/utils/links';
 
 import styles from './WhatsAppFloat.module.css';
 
-/** No hero e no contato, o WhatsApp já tem botão visível, e o flutuante cobriria botões e campos. */
-const HIDDEN_OVER = [sectionIds.hero, sectionIds.contact];
+/**
+ * Oculto onde cobriria controles ou repetiria um acesso já visível: no hero e no footer, que têm
+ * o WhatsApp; no FAQ, cujos botões ocupam a largura toda; e no contato, sobre o formulário.
+ */
+const HIDDEN_OVER = [sectionIds.hero, sectionIds.faq, sectionIds.contact, sectionIds.footer];
 
 export function WhatsAppFloat() {
   const hidden = useAnyInView(HIDDEN_OVER);

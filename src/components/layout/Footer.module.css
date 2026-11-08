@@ -1,0 +1,144 @@
+.footer {
+  position: relative;
+  padding-top: var(--section-space-compact);
+  border-top: var(--border-hairline);
+  background-color: var(--color-black);
+  font-size: var(--text-sm);
+}
+
+/* Fio dourado no alto, alinhado ao conteúdo e não à borda da tela. */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: max(var(--container-gutter), calc((100% - var(--container-default)) / 2 + var(--container-gutter)));
+  width: var(--space-24);
+  height: 1px;
+  background-color: var(--color-accent);
+}
+
+.top {
+  display: grid;
+  gap: var(--space-12);
+  padding-bottom: var(--space-16);
+}
+
+.brand {
+  display: grid;
+  gap: var(--space-5);
+  align-content: start;
+  justify-items: start;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  text-decoration: none;
+}
+
+.logo img {
+  width: auto;
+  height: 2.5rem;
+}
+
+.description {
+  max-width: 36ch;
+  font-size: var(--text-base);
+}
+
+.coverage {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  color: var(--color-text);
+}
+
+.coverage svg {
+  color: var(--color-accent);
+}
+
+.column {
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+  justify-items: start;
+}
+
+.title {
+  color: var(--color-text-subtle);
+  font-family: var(--font-heading);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.links {
+  display: grid;
+}
+
+/* Alvos de 44px de altura, sem aparência de botão. */
+.links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .links a:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+.label {
+  color: var(--color-text-subtle);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-8);
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--space-6);
+  border-top: var(--border-hairline);
+  color: var(--color-text-subtle);
+}
+
+.bottom a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 40em) {
+  .top {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 60em) {
+  .top {
+    grid-template-columns: 5fr 2fr 3fr 2fr;
+    gap: var(--space-10);
+  }
+
+  .brand {
+    grid-column: auto;
+  }
+}
+
+@media print {
+  .footer::before {
+    display: none;
+  }
+}

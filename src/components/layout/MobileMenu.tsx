@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 
 import { Logo } from '@/components/brand/Logo';
 import { ButtonLink } from '@/components/ui/Button';
-import { headerCtaLabel, navItems } from '@/config/navigation';
+import { anchorHref, headerCtaLabel, type LinkBase, navItems } from '@/config/navigation';
 import { buildWhatsAppUrl } from '@/integrations/whatsapp';
 
 import styles from './MobileMenu.module.css';
@@ -12,13 +12,14 @@ const DESKTOP_QUERY = '(min-width: 60em)';
 
 interface MobileMenuProps {
   className?: string;
+  linkBase?: LinkBase;
 }
 
 /**
  * Usa `dialog` modal: o navegador cuida da captura de foco, do fechamento com Esc,
  * da devolução do foco ao botão e de tornar o restante da página inerte.
  */
-export function MobileMenu({ className }: MobileMenuProps) {
+export function MobileMenu({ className, linkBase = '' }: MobileMenuProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const close = () => dialogRef.current?.close();
@@ -62,7 +63,7 @@ export function MobileMenu({ className }: MobileMenuProps) {
           <ul className={styles.list}>
             {navItems.map((item) => (
               <li key={item.href} className={styles.item}>
-                <a className={styles.link} href={item.href} onClick={close}>
+                <a className={styles.link} href={anchorHref(linkBase, item.href)} onClick={close}>
                   {item.label}
                 </a>
               </li>

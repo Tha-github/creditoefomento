@@ -1,3 +1,5 @@
+import { site } from '@shared/site';
+
 export interface BrandLogo {
   src: string;
   alt: string;
@@ -22,15 +24,15 @@ export interface Brand {
 }
 
 export const brand: Brand = {
-  name: 'Crédito e Fomento',
+  name: site.name,
   segment: 'Crédito empresarial',
   specialty: 'Antecipação de recebíveis',
   coverage: 'Nacional',
   // Instruções para receber o arquivo em src/assets/brand/README.md
   logo: null,
   whatsapp: {
-    number: '5542998476331',
-    display: '+55 42 99847-6331',
+    number: site.whatsapp.number,
+    display: site.whatsapp.display,
     defaultMessage:
       'Olá! Gostaria de conhecer as soluções financeiras da Crédito e Fomento e entender as possibilidades para minha empresa.',
   },

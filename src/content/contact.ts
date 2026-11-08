@@ -37,9 +37,10 @@ export const contactContent = {
       },
       {
         term: 'Como falar com a empresa',
-        text: 'Pelo WhatsApp comercial informado nesta página.',
+        text: 'Pelo canal indicado na Política de Privacidade.',
       },
     ],
+    fullPolicy: 'Ler a Política de Privacidade completa',
     accept: 'Li e aceito a Política de Privacidade.',
   },
   submit: 'Enviar solicitação',

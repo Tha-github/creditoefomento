@@ -1,0 +1,60 @@
+# Publica o site no GitHub Pages a cada push na main.
+# Endereço: https://<usuário>.github.io/<repositório>/
+# Em Settings > Pages, a fonte precisa ser "GitHub Actions".
+name: Publicar no GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Lint, tipos e testes
+        run: npm run lint && npm run typecheck && npm test
+
+      # No Pages de projeto o site fica em /<repositório>/. Com domínio próprio,
+      # trocar BASE_PATH para "/" e SITE_URL para o domínio.
+      - name: Endereço do site
+        run: |
+          owner="${GITHUB_REPOSITORY_OWNER,,}"
+          repo="${GITHUB_REPOSITORY#*/}"
+          echo "BASE_PATH=/${repo}/" >> "$GITHUB_ENV"
+          echo "SITE_URL=https://${owner}.github.io/${repo}" >> "$GITHUB_ENV"
+
+      - name: Build com pré-renderização
+        run: npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

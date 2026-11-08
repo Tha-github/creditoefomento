@@ -17,6 +17,8 @@ interface CardProps {
    * `wide` é um card horizontal, com a ação à direita do texto em telas largas.
    */
   variant?: 'default' | 'featured' | 'wide';
+  /** Âncora do card, para links diretos. */
+  id?: string;
   /** Estende a área clicável do link da ação a todo o card. */
   stretchedAction?: boolean;
   headingLevel?: 'h2' | 'h3' | 'h4';
@@ -31,6 +33,7 @@ export function Card({
   icon,
   action,
   variant = 'default',
+  id,
   stretchedAction = false,
   headingLevel: Heading = 'h3',
   children,
@@ -38,6 +41,7 @@ export function Card({
 }: CardProps) {
   return (
     <article
+      id={id}
       className={cx(
         styles.card,
         styles[variant],

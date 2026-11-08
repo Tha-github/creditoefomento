@@ -32,6 +32,7 @@ export function Solutions() {
         {otherProducts.map((product) => (
           <Card
             key={product.id}
+            id={product.id}
             className={styles.card}
             title={product.name}
             description={product.description}

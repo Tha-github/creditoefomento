@@ -11,6 +11,7 @@ import {
 } from '@/components/form/Field';
 import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
+import { privacyPolicyHref } from '@/config/navigation';
 import { contactContent } from '@/content/contact';
 import { buildWhatsAppUrl } from '@/integrations/whatsapp';
 import { formatAmount, formatCnpj, formatPhone } from '@/utils/masks';
@@ -193,6 +194,10 @@ export function ContactForm() {
             </div>
           ))}
         </dl>
+        {/* Nova aba: abrir a política na mesma aba descartaria o que já foi preenchido. */}
+        <TextLink className={styles.fullPolicy} href={privacyPolicyHref} external>
+          {privacy.fullPolicy}
+        </TextLink>
       </details>
 
       <CheckboxField

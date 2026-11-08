@@ -2,7 +2,7 @@ export const solutionsContent = {
   eyebrow: 'Soluções financeiras',
   title: 'Um portfólio para diferentes necessidades empresariais.',
   description:
-    'A antecipação de recebíveis é a nossa especialidade. As demais modalidades ampliam as alternativas para cada operação.',
+    'A antecipação de recebíveis é a nossa especialidade. As demais modalidades ampliam as alternativas disponíveis para a sua empresa.',
   featured: {
     statement: {
       lead: 'Transforme seus recebíveis futuros em',

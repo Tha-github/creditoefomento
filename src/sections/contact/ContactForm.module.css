@@ -74,6 +74,10 @@
   margin: 0;
 }
 
+.fullPolicy {
+  margin-bottom: var(--space-3);
+}
+
 .problem {
   display: grid;
   gap: var(--space-1);

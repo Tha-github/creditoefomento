@@ -1,3 +1,4 @@
+import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { WhatsAppFloat } from '@/components/layout/WhatsAppFloat';
@@ -26,6 +27,7 @@ export function HomePage() {
         <Faq />
         <Contact />
       </main>
+      <Footer />
       <WhatsAppFloat />
     </>
   );

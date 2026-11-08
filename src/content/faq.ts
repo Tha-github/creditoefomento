@@ -34,7 +34,7 @@ export const faqContent: {
       id: 'tipos-de-recebiveis',
       question: 'Quais tipos de recebíveis podem ser analisados?',
       answer:
-        'Podem ser apresentados recebíveis provenientes de vendas e contratos, como duplicatas. A possibilidade de antecipação é avaliada individualmente, de acordo com as características de cada operação.',
+        'Podem ser apresentados recebíveis provenientes de vendas e contratos, como duplicatas. A possibilidade de antecipação é avaliada caso a caso.',
     },
     {
       id: 'processo',

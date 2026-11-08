@@ -153,15 +153,19 @@
   }
 }
 
-/* A animação só existe com movimento permitido: sem ela, tudo já nasce no estado final. */
+/*
+ * A animação só existe com movimento permitido: sem ela, tudo já nasce no estado final.
+ * A imagem e o título são candidatos a LCP: entram já visíveis, só com movimento, porque o
+ * navegador não conta o LCP enquanto o elemento está transparente.
+ */
 @media (prefers-reduced-motion: no-preference) {
-  .copy header > *,
+  .copy header > :not(:nth-child(2)),
   .actions {
     animation: rise var(--duration-entrance) var(--ease-standard) both;
   }
 
   .copy header > :nth-child(2) {
-    animation-delay: 80ms;
+    animation: rise-visible var(--duration-entrance) var(--ease-standard) both;
   }
 
   .copy header > :nth-child(3) {
@@ -179,10 +183,6 @@
   .markWrap {
     animation: appear 1200ms var(--ease-standard) 400ms both;
   }
-
-  .mark {
-    animation: drift 14s ease-in-out infinite alternate;
-  }
 }
 
 @keyframes rise {
@@ -192,21 +192,20 @@
   }
 }
 
+@keyframes rise-visible {
+  from {
+    transform: translateY(0.75rem);
+  }
+}
+
 @keyframes settle {
   from {
-    opacity: 0;
-    transform: scale(1.05);
+    transform: scale(1.04);
   }
 }
 
 @keyframes appear {
   from {
     opacity: 0;
-  }
-}
-
-@keyframes drift {
-  to {
-    transform: translateY(-0.5rem);
   }
 }

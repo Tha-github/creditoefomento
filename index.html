@@ -3,29 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crédito e Fomento | Crédito empresarial e antecipação de recebíveis</title>
-    <meta
-      name="description"
-      content="Soluções de crédito empresarial com atuação nacional e especialidade em antecipação de recebíveis."
-    />
-    <meta name="theme-color" content="#080808" />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="Crédito e Fomento" />
-    <meta
-      property="og:title"
-      content="Crédito e Fomento | Crédito empresarial e antecipação de recebíveis"
-    />
-    <meta
-      property="og:description"
-      content="Soluções de crédito empresarial com atuação nacional e especialidade em antecipação de recebíveis."
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- seo -->
+    <!-- Imagem principal (LCP): mesmas larguras e `sizes` do <picture> em src/sections/hero/Hero.tsx. -->
     <link
       rel="preload"
       as="image"
       type="image/avif"
-      href="/src/assets/images/hero/hero-desktop.avif"
+      imagesrcset="/src/assets/images/hero/hero-desktop-1200.avif 1200w, /src/assets/images/hero/hero-desktop-1800.avif 1800w"
+      imagesizes="62vw"
       media="(min-width: 60em)"
       fetchpriority="high"
     />
@@ -33,7 +18,8 @@
       rel="preload"
       as="image"
       type="image/avif"
-      href="/src/assets/images/hero/hero-mobile.avif"
+      imagesrcset="/src/assets/images/hero/hero-mobile-600.avif 600w, /src/assets/images/hero/hero-mobile-900.avif 900w"
+      imagesizes="100vw"
       media="(max-width: 59.99em)"
       fetchpriority="high"
     />
