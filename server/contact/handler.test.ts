@@ -8,15 +8,10 @@ const NOW = 1_000_000;
 const PII = 'maria.sigilosa@empresa.com.br';
 
 const validBody = {
-  name: 'Maria Souza',
   company: 'Empresa Exemplo Ltda',
-  cnpj: '',
+  cnpj: '11.222.333/0001-81',
   email: PII,
   phone: '(42) 99847-6331',
-  product: 'capital-de-giro',
-  amount: '',
-  message: 'Gostaria de entender as possibilidades.',
-  privacyAccepted: true,
   website: '',
   startedAt: NOW - 10_000,
 };
@@ -107,7 +102,7 @@ describe('handleContactRequest', () => {
   it('recusa corpo grande demais, sem ler o conteúdo', async () => {
     const { deps, sender } = makeDeps();
     const response = await handleContactRequest(
-      makeRequest({ ...validBody, message: 'a'.repeat(20_000) }),
+      makeRequest({ ...validBody, company: 'a'.repeat(20_000) }),
       deps,
     );
     expect(response.status).toBe(413);
@@ -123,29 +118,19 @@ describe('handleContactRequest', () => {
   it('valida no servidor e devolve os erros por campo, sem enviar', async () => {
     const { deps, sender } = makeDeps();
     const response = await handleContactRequest(
-      makeRequest({ ...validBody, email: 'invalido', privacyAccepted: false }),
+      makeRequest({ ...validBody, email: 'invalido' }),
       deps,
     );
     expect(response.status).toBe(422);
     const body = (await response.json()) as { fieldErrors: Record<string, string> };
-    expect(Object.keys(body.fieldErrors).sort()).toEqual(['email', 'privacyAccepted']);
-    expect(sender).not.toHaveBeenCalled();
-  });
-
-  it('exige que o aceite seja verdadeiro, e não apenas preenchido', async () => {
-    const { deps, sender } = makeDeps();
-    const response = await handleContactRequest(
-      makeRequest({ ...validBody, privacyAccepted: 'true' }),
-      deps,
-    );
-    expect(response.status).toBe(422);
+    expect(Object.keys(body.fieldErrors).sort()).toEqual(['email']);
     expect(sender).not.toHaveBeenCalled();
   });
 
   it('trata tipos inesperados como campos vazios', async () => {
     const { deps, sender } = makeDeps();
     const response = await handleContactRequest(
-      makeRequest({ ...validBody, name: { $ne: 1 }, email: ['a@b.com'] }),
+      makeRequest({ ...validBody, company: { $ne: 1 }, email: ['a@b.com'] }),
       deps,
     );
     expect(response.status).toBe(422);

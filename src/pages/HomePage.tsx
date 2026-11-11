@@ -19,13 +19,14 @@ export function HomePage() {
       <Header />
       <main id={sectionIds.main} tabIndex={-1}>
         <Hero />
+        <Solutions />
         <About />
         <Differentials />
-        <Solutions />
+        <Solutions portfolio />
+        <Contact />
         <Process />
         <Approach />
         <Faq />
-        <Contact />
       </main>
       <Footer />
       <WhatsAppFloat />

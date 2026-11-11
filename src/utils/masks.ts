@@ -1,4 +1,4 @@
-import { cnpjCharacters, contactLimits, onlyDigits } from '@shared/contact/validation';
+import { cnpjCharacters, onlyDigits } from '@shared/contact/validation';
 
 /** (42) 99999-9999 ou (42) 3333-3333, conforme a quantidade de dígitos. */
 export function formatPhone(value: string): string {
@@ -29,8 +29,3 @@ export function formatCnpj(value: string): string {
 }
 
 /** R$ 1.250.000, em reais inteiros: o campo pede um valor aproximado. */
-export function formatAmount(value: string): string {
-  const digits = onlyDigits(value).replace(/^0+/, '').slice(0, contactLimits.amountDigits);
-  if (!digits) return '';
-  return `R$ ${digits.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
-}

@@ -46,7 +46,7 @@ export const faqContent: {
       id: 'informacoes',
       question: 'Quais informações são necessárias para iniciar o atendimento?',
       answer:
-        'Para o primeiro contato, bastam seu nome, a empresa, e-mail, telefone, a solução de interesse e uma breve descrição da necessidade. CNPJ e valor aproximado são opcionais. Não envie documentos financeiros ou extratos pelo formulário: se outras informações forem necessárias, nossa equipe orientará durante o atendimento.',
+        'Para iniciar o atendimento, informe o nome da empresa, CNPJ e WhatsApp. O e-mail corporativo é opcional. Não envie documentos financeiros ou extratos pelo formulário: se outras informações forem necessárias, nossa equipe orientará durante o atendimento.',
     },
     {
       id: 'todo-o-brasil',

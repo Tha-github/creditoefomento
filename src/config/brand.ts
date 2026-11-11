@@ -1,4 +1,5 @@
 import { site } from '@shared/site';
+import logoUrl from '@/assets/images/logo.png';
 
 export interface BrandLogo {
   src: string;
@@ -13,7 +14,7 @@ export interface Brand {
   segment: string;
   specialty: string;
   coverage: string;
-  /** `null` enquanto o arquivo original da cliente não for fornecido. */
+  /** Logomarca fornecida pela cliente. */
   logo: BrandLogo | null;
   whatsapp: {
     /** Somente dígitos, com DDI e DDD. */
@@ -28,8 +29,7 @@ export const brand: Brand = {
   segment: 'Crédito empresarial',
   specialty: 'Antecipação de recebíveis',
   coverage: 'Nacional',
-  // Instruções para receber o arquivo em src/assets/brand/README.md
-  logo: null,
+  logo: { src: logoUrl, alt: 'Crédito e Fomento', width: 467, height: 215 },
   whatsapp: {
     number: site.whatsapp.number,
     display: site.whatsapp.display,

@@ -53,14 +53,10 @@ export const privacyPolicyContent: {
         {
           type: 'list',
           items: [
-            'nome completo;',
             'nome da empresa;',
-            'CNPJ, se você o informar;',
-            'e-mail corporativo;',
-            'telefone ou WhatsApp;',
-            'produto de interesse;',
-            'valor aproximado da operação, se você o informar;',
-            'a mensagem que você escrever.',
+            'CNPJ;',
+            'WhatsApp;',
+            'e-mail corporativo, se você o informar.',
           ],
         },
         {

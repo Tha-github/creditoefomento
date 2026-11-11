@@ -89,7 +89,7 @@ export function Hero() {
             description={description}
           />
           <div className={styles.actions}>
-            <ButtonLink href={`#${sectionIds.solutions}`} size="lg" icon={ArrowRight}>
+            <ButtonLink href={`#${sectionIds.contact}`} size="lg" icon={ArrowRight}>
               {primaryCta}
             </ButtonLink>
             <ButtonLink href={buildWhatsAppUrl()} external variant="secondary" size="lg">

@@ -1,12 +1,9 @@
 import { ArrowRight, ChevronDown, CircleCheck } from 'lucide-react';
 import { type FormEvent, useEffect, useRef } from 'react';
 
-import { contactLimits, contactProducts } from '@shared/contact/validation';
+import { contactLimits } from '@shared/contact/validation';
 
 import {
-  CheckboxField,
-  SelectField,
-  TextareaField,
   TextField,
 } from '@/components/form/Field';
 import { Button } from '@/components/ui/Button';
@@ -14,7 +11,7 @@ import { TextLink } from '@/components/ui/TextLink';
 import { privacyPolicyHref } from '@/config/navigation';
 import { contactContent } from '@/content/contact';
 import { buildWhatsAppUrl } from '@/integrations/whatsapp';
-import { formatAmount, formatCnpj, formatPhone } from '@/utils/masks';
+import { formatCnpj, formatPhone } from '@/utils/masks';
 
 import styles from './ContactForm.module.css';
 import { contactFieldId, type ContactFormStatus, useContactForm } from './useContactForm';
@@ -70,17 +67,6 @@ export function ContactForm() {
     <form className={styles.panel} onSubmit={handleSubmit} noValidate aria-label="Formulário de contato">
       <div className={styles.grid}>
         <TextField
-          className={styles.full}
-          id={contactFieldId('name')}
-          label={fields.name.label}
-          autoComplete={fields.name.autoComplete}
-          maxLength={contactLimits.name}
-          value={values.name}
-          error={errors.name}
-          onValueChange={(value) => setField('name', value)}
-          onBlur={() => blurField('name')}
-        />
-        <TextField
           id={contactFieldId('company')}
           label={fields.company.label}
           autoComplete={fields.company.autoComplete}
@@ -93,7 +79,6 @@ export function ContactForm() {
         <TextField
           id={contactFieldId('cnpj')}
           label={fields.cnpj.label}
-          optional
           placeholder={fields.cnpj.placeholder}
           autoComplete="off"
           autoCapitalize="characters"
@@ -102,19 +87,6 @@ export function ContactForm() {
           error={errors.cnpj}
           onValueChange={(value) => setField('cnpj', value)}
           onBlur={() => blurField('cnpj')}
-        />
-        <TextField
-          id={contactFieldId('email')}
-          label={fields.email.label}
-          type="email"
-          inputMode="email"
-          placeholder={fields.email.placeholder}
-          autoComplete={fields.email.autoComplete}
-          maxLength={contactLimits.email}
-          value={values.email}
-          error={errors.email}
-          onValueChange={(value) => setField('email', value)}
-          onBlur={() => blurField('email')}
         />
         <TextField
           id={contactFieldId('phone')}
@@ -129,41 +101,19 @@ export function ContactForm() {
           onValueChange={(value) => setField('phone', value)}
           onBlur={() => blurField('phone')}
         />
-        <SelectField
-          className={styles.full}
-          id={contactFieldId('product')}
-          label={fields.product.label}
-          placeholder={fields.product.placeholder}
-          options={contactProducts}
-          value={values.product}
-          error={errors.product}
-          onValueChange={(value) => setField('product', value)}
-          onBlur={() => blurField('product')}
-        />
         <TextField
-          className={styles.full}
-          id={contactFieldId('amount')}
-          label={fields.amount.label}
+          id={contactFieldId('email')}
+          label={fields.email.label}
+          type="email"
+          inputMode="email"
+          placeholder={fields.email.placeholder}
+          autoComplete={fields.email.autoComplete}
+          maxLength={contactLimits.email}
+          value={values.email}
+          error={errors.email}
+          onValueChange={(value) => setField('email', value)}
+          onBlur={() => blurField('email')}
           optional
-          inputMode="numeric"
-          placeholder={fields.amount.placeholder}
-          autoComplete="off"
-          format={formatAmount}
-          value={values.amount}
-          error={errors.amount}
-          onValueChange={(value) => setField('amount', value)}
-          onBlur={() => blurField('amount')}
-        />
-        <TextareaField
-          className={styles.full}
-          id={contactFieldId('message')}
-          label={fields.message.label}
-          rows={4}
-          maxLength={contactLimits.message}
-          value={values.message}
-          error={errors.message}
-          onValueChange={(value) => setField('message', value)}
-          onBlur={() => blurField('message')}
         />
       </div>
 
@@ -199,14 +149,6 @@ export function ContactForm() {
           {privacy.fullPolicy}
         </TextLink>
       </details>
-
-      <CheckboxField
-        id={contactFieldId('privacyAccepted')}
-        label={privacy.accept}
-        checked={values.privacyAccepted}
-        error={errors.privacyAccepted}
-        onCheckedChange={(checked) => setField('privacyAccepted', checked)}
-      />
 
       {isProblem(status) && (
         <div className={styles.problem} role="alert">

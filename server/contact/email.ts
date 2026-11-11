@@ -1,4 +1,4 @@
-import { contactProducts, type ContactFormValues } from '../../shared/contact/validation';
+import type { ContactFormValues } from '../../shared/contact/validation';
 
 export interface EmailConfig {
   apiKey: string;
@@ -16,26 +16,15 @@ function singleLine(value: string): string {
 
 /** Somente texto puro: o conteúdo do visitante nunca é interpretado como HTML. */
 export function buildContactEmail(values: ContactFormValues) {
-  const product =
-    contactProducts.find(({ value }) => value === values.product)?.label ?? values.product;
-
   return {
-    subject: singleLine(`Nova solicitação: ${product} | ${values.company}`),
+    subject: singleLine(`Nova solicitação comercial | ${values.company}`),
     text: [
-      `Nome: ${singleLine(values.name)}`,
       `Empresa: ${singleLine(values.company)}`,
-      `CNPJ: ${singleLine(values.cnpj) || 'Não informado'}`,
-      `E-mail: ${singleLine(values.email)}`,
-      `Telefone/WhatsApp: ${singleLine(values.phone)}`,
-      `Produto de interesse: ${product}`,
-      `Valor aproximado: ${singleLine(values.amount) || 'Não informado'}`,
-      '',
-      'Mensagem:',
-      values.message.trim(),
-      '',
-      'Política de Privacidade aceita no envio do formulário.',
+      `CNPJ: ${singleLine(values.cnpj)}`,
+      `WhatsApp: ${singleLine(values.phone)}`,
+      `E-mail corporativo: ${singleLine(values.email) || 'Não informado'}`,
     ].join('\n'),
-    replyTo: singleLine(values.email),
+    ...(values.email.trim() ? { replyTo: singleLine(values.email) } : {}),
   };
 }
 
@@ -50,7 +39,7 @@ export function createResendSender(
     const response = await fetcher(apiUrl, {
       method: 'POST',
       headers: { Authorization: `Bearer ${apiKey}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ from, to: [to], subject, text, reply_to: replyTo }),
+      body: JSON.stringify({ from, to: [to], subject, text, ...(replyTo ? { reply_to: replyTo } : {}) }),
       signal: AbortSignal.timeout(10_000),
     });
 

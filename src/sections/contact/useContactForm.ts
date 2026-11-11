@@ -22,15 +22,10 @@ export type ContactFormStatus =
   | 'failed';
 
 const EMPTY_VALUES: ContactFormValues = {
-  name: '',
   company: '',
   cnpj: '',
   email: '',
   phone: '',
-  product: '',
-  amount: '',
-  message: '',
-  privacyAccepted: false,
 };
 
 export function contactFieldId(field: ContactField): string {
@@ -85,7 +80,7 @@ export function useContactForm() {
 
     inFlight.current = true;
     setStatus('submitting');
-    const result = await submitContact({ ...values, website, startedAt: startedAt.current });
+    const result = await submitContact({ ...values, company: values.company.trim(), email: values.email.trim(), website, startedAt: startedAt.current });
     inFlight.current = false;
 
     if (result.status === 'validation') {

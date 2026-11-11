@@ -7,21 +7,17 @@ export const contactContent = {
   sensitiveDataNote:
     'Não envie documentos financeiros, extratos bancários ou dados sensíveis por este formulário.',
   fields: {
-    name: { label: 'Nome completo', autoComplete: 'name' },
     company: { label: 'Nome da empresa', autoComplete: 'organization' },
     cnpj: { label: 'CNPJ', placeholder: '00.000.000/0000-00' },
     email: { label: 'E-mail corporativo', placeholder: 'nome@empresa.com.br', autoComplete: 'email' },
-    phone: { label: 'Telefone/WhatsApp', placeholder: '(00) 00000-0000', autoComplete: 'tel-national' },
-    product: { label: 'Produto de interesse', placeholder: 'Selecione' },
-    amount: { label: 'Valor aproximado da operação', placeholder: 'R$' },
-    message: { label: 'Mensagem' },
+    phone: { label: 'WhatsApp', placeholder: '(00) 00000-0000', autoComplete: 'tel-national' },
   },
   privacy: {
     summary: 'Política de Privacidade e tratamento de dados',
     items: [
       {
         term: 'Dados coletados',
-        text: 'Nome, empresa, CNPJ e valor aproximado (se informados), e-mail, telefone, produto de interesse e mensagem.',
+        text: 'Nome da empresa, CNPJ e WhatsApp, além do e-mail corporativo caso seja informado.',
       },
       {
         term: 'Finalidade',

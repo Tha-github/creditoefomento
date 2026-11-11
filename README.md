@@ -174,7 +174,7 @@ Headers não tornam um site seguro por si sós. Eles reduzem classes específica
 ## LGPD
 
 **Revisão do formulário e do tratamento de dados:**
-- **Coleta mínima:** CNPJ e valor são opcionais, e não há campos para documentos ou dados sensíveis, com aviso explícito para não enviá-los.
+- **Coleta mínima:** nome da empresa, CNPJ e WhatsApp são obrigatórios; e-mail corporativo é opcional. O formulário não solicita documentos ou dados sensíveis.
 - **Consentimento:** a caixa de aceite começa desmarcada e é obrigatória no navegador e no servidor. O servidor exige o valor booleano `true`. Não há consentimento para marketing.
 - **Armazenamento e exposição:** nada fica guardado no site; os dados seguem só por e-mail. O IP vira hash por 10 minutos. Nenhum dado pessoal aparece em URLs ou logs. O site não usa cookies, análise de navegação ou armazenamento local.
 - **Política de Privacidade:** versão preliminar, com 8 pendências que dependem da empresa.

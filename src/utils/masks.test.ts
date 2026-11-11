@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { formatAmount, formatCnpj, formatPhone } from './masks';
+import { formatCnpj, formatPhone } from './masks';
 
 describe('formatPhone', () => {
   it.each([
@@ -29,19 +29,5 @@ describe('formatCnpj', () => {
     ['11222333000181999', '11.222.333/0001-81'],
   ])('%s vira %s', (input, expected) => {
     expect(formatCnpj(input)).toBe(expected);
-  });
-});
-
-describe('formatAmount', () => {
-  it.each([
-    ['', ''],
-    ['0', ''],
-    ['abc', ''],
-    ['500', 'R$ 500'],
-    ['1250000', 'R$ 1.250.000'],
-    ['R$ 1.250', 'R$ 1.250'],
-    ['007', 'R$ 7'],
-  ])('%s vira %s', (input, expected) => {
-    expect(formatAmount(input)).toBe(expected);
   });
 });

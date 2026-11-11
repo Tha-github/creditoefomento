@@ -13,22 +13,22 @@ import styles from './Solutions.module.css';
 /** O último produto ocupa a linha inteira em um card horizontal. */
 const WIDE_PRODUCT_ID = 'conta-escrow';
 
-export function Solutions() {
-  const { eyebrow, title, description, productCta, note } = solutionsContent;
+export function Solutions({ portfolio = false }: { portfolio?: boolean }) {
+  const { description, productCta, note } = solutionsContent;
 
   return (
-    <Section id={sectionIds.solutions} tone="soft" aria-labelledby="solucoes-titulo">
+    <Section id={portfolio ? 'portfolio' : sectionIds.solutions} tone="soft" aria-labelledby={portfolio ? 'portfolio-titulo' : 'solucoes-titulo'}>
       <SectionHeading
-        eyebrow={eyebrow}
-        title={title}
-        description={description}
-        titleId="solucoes-titulo"
+        eyebrow={portfolio ? 'Portfólio' : 'Crédito empresarial'}
+        title={portfolio ? 'Soluções para diferentes necessidades empresariais.' : 'Crédito empresarial alinhado à realidade da sua empresa.'}
+        description={portfolio ? description : 'A Crédito e Fomento conecta empresas a alternativas de crédito estruturado, considerando as características e necessidades de cada operação.'}
+        titleId={portfolio ? 'portfolio-titulo' : 'solucoes-titulo'}
         layout="split"
       />
 
-      <FeaturedSolution className={styles.featured} />
+      {portfolio && <FeaturedSolution className={styles.featured} />}
 
-      <div className={styles.grid}>
+      {portfolio && <div className={styles.grid}>
         {otherProducts.map((product) => (
           <Card
             key={product.id}
@@ -47,9 +47,9 @@ export function Solutions() {
             }
           />
         ))}
-      </div>
+      </div>}
 
-      <p className={styles.note}>{note}</p>
+      {portfolio && <p className={styles.note}>{note}</p>}
     </Section>
   );
 }

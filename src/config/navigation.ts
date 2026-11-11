@@ -22,7 +22,7 @@ export interface NavItem {
 }
 
 export const navItems: readonly NavItem[] = [
-  { label: 'Soluções financeiras', href: `#${sectionIds.solutions}` },
+  { label: 'Crédito empresarial', href: `#${sectionIds.solutions}` },
   { label: 'Sobre nós', href: `#${sectionIds.about}` },
   { label: 'Contato', href: `#${sectionIds.contact}` },
 ];

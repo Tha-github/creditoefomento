@@ -111,15 +111,10 @@ function text(value: unknown, keepLineBreaks = false): string {
 /** Aceita somente os campos conhecidos: o restante do corpo é descartado. */
 function readValues(body: Record<string, unknown>): ContactFormValues {
   return {
-    name: text(body.name),
     company: text(body.company),
     cnpj: text(body.cnpj),
     email: text(body.email),
     phone: text(body.phone),
-    product: text(body.product),
-    amount: text(body.amount),
-    message: text(body.message, true),
-    privacyAccepted: body.privacyAccepted === true,
   };
 }
 
