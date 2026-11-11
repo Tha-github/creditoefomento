@@ -44,7 +44,7 @@ describe('subcaminho e CSP', () => {
     const head = buildHead('privacy', PAGES_URL, { base: '/creditoefomento/' });
     expect(head).toContain(`href="${PAGES_URL}/politica-de-privacidade/"`);
     expect(buildHead('home', PAGES_URL)).toContain(`content="${PAGES_URL}/og-image.jpg"`);
-    expect(head).toContain('href="/creditoefomento/favicon.svg"');
+    expect(head).toContain('href="/creditoefomento/favicon.png"');
     expect(head).toContain('href="/creditoefomento/apple-touch-icon.png"');
   });
 

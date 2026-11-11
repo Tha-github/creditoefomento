@@ -98,7 +98,7 @@ export function buildHead(
     meta('name', 'robots', page.indexable ? 'index, follow' : 'noindex, follow'),
     meta('name', 'theme-color', site.themeColor),
     url ? `<link rel="canonical" href="${escapeAttribute(url)}" />` : '',
-    `<link rel="icon" type="image/svg+xml" href="${asset(base, 'favicon.svg')}" />`,
+    `<link rel="icon" type="image/png" sizes="64x64" href="${asset(base, 'favicon.png')}" />`,
     `<link rel="apple-touch-icon" href="${asset(base, 'apple-touch-icon.png')}" />`,
     meta('property', 'og:type', 'website'),
     meta('property', 'og:locale', site.locale),

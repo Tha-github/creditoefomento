@@ -17,6 +17,6 @@ Formato preferencial: SVG. Na falta dele, PNG ou WebP em alta resolução com fu
 
    `width` e `height` devem ser as dimensões reais do arquivo, para evitar CLS.
 
-3. Gerar o favicon a partir do arquivo original e substituir `public/favicon.svg`, que é provisório.
+3. Gerar o favicon e o ícone Apple a partir do arquivo original, substituindo `public/favicon.png` e `public/apple-touch-icon.png`.
 
 O componente `src/components/brand/Logo.tsx` passa a exibir a imagem automaticamente.

@@ -92,7 +92,7 @@ A cada push na `main`, [.github/workflows/deploy-pages.yml](.github/workflows/de
 
 ### Política de Privacidade
 
-A página está em **versão preliminar**: mostra um aviso, recebe `noindex` e fica fora do sitemap. Os pontos marcados como "Pendente de validação" em `src/content/privacyPolicy.ts` dependem da empresa: controlador (razão social, CNPJ e endereço), base legal, provedores e transferência internacional, retenção, canal de privacidade e encarregado, data de vigência.
+A página permanece em **versão preliminar**: mostra um aviso, recebe `noindex` e fica fora do sitemap. Ela descreve somente os campos e o comportamento conhecido do site; a identificação jurídica, os registros da hospedagem e seus prazos de retenção não foram informados.
 
 Depois de preencher e validar juridicamente o texto, trocar `privacyPolicyValidated` para `true` em `shared/site.ts`.
 

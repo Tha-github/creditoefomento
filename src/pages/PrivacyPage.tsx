@@ -12,17 +12,6 @@ import { type PolicyBlock, privacyPolicyContent } from '@/content/privacyPolicy'
 
 import styles from './PrivacyPage.module.css';
 
-const { pendingLabel } = privacyPolicyContent;
-
-/** Marcação visível de propósito: impede que uma pendência passe despercebida antes da publicação. */
-function Pending({ text }: { text: string }) {
-  return (
-    <p className={styles.pending}>
-      <strong>{pendingLabel}:</strong> {text}
-    </p>
-  );
-}
-
 function Block({ block }: { block: PolicyBlock }) {
   switch (block.type) {
     case 'paragraph':
@@ -35,14 +24,11 @@ function Block({ block }: { block: PolicyBlock }) {
           ))}
         </ul>
       );
-    case 'pending':
-      return <Pending text={block.text} />;
   }
 }
 
 export function PrivacyPage() {
-  const { eyebrow, title, intro, draftNotice, effectiveDate, tocLabel, sections } =
-    privacyPolicyContent;
+  const { eyebrow, title, intro, draftNotice, tocLabel, sections } = privacyPolicyContent;
 
   return (
     <>
@@ -66,7 +52,6 @@ export function PrivacyPage() {
                 <span>{draftNotice}</span>
               </p>
             )}
-            <Block block={effectiveDate} />
           </div>
 
           <nav className={styles.toc} aria-labelledby="politica-indice">

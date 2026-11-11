@@ -88,7 +88,10 @@ export function Footer({ linkBase = '' }: FooterProps) {
 
         <div className={styles.bottom}>
           <p>
-            © {__BUILD_YEAR__} {brand.name}. {rights}
+            © {__BUILD_YEAR__} {brand.name} | {rights} | Site Criado Por{' '}
+            <a href="https://topsitebr.com.br" target="_blank" rel="noreferrer">
+              <strong>Top Site</strong>
+            </a>
           </p>
           <a href={privacyPolicyHref}>{privacyLabel}</a>
         </div>

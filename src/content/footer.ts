@@ -7,5 +7,5 @@ export const footerContent = {
   contactTitle: 'Contato',
   whatsappLabel: 'WhatsApp comercial',
   privacyLabel: 'Política de Privacidade',
-  rights: 'Todos os direitos reservados.',
+  rights: 'Todos os direitos reservados',
 } as const;

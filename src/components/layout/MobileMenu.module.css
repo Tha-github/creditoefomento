@@ -44,6 +44,12 @@ html:has(.menu[open]) {
   height: var(--header-height);
 }
 
+.top img {
+  width: auto;
+  height: 2rem;
+  margin-left: 0;
+}
+
 .nav {
   flex-grow: 1;
   padding-block: var(--space-8);

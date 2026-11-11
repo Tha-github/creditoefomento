@@ -25,7 +25,7 @@ export const contactContent = {
       },
       {
         term: 'Como são utilizados',
-        text: 'As informações são enviadas por e-mail à equipe da Crédito e Fomento, por meio de um provedor de envio, e não ficam armazenadas neste site.',
+        text: 'O formulário faz uma requisição ao endpoint de contato. Na publicação atual no GitHub Pages, esse endpoint não está disponível e o site informa que o envio falhou.',
       },
       {
         term: 'Seus direitos',

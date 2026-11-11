@@ -46,7 +46,7 @@ export const pages = {
     path: '/politica-de-privacidade/',
     title: 'Política de Privacidade | Crédito e Fomento',
     description:
-      'Como a Crédito e Fomento trata os dados pessoais enviados pelo site: dados coletados, finalidade, compartilhamento, segurança e direitos dos titulares.',
+      'Informações sobre os dados solicitados pelo formulário de contato da Crédito e Fomento e sobre o funcionamento conhecido do site.',
     indexable: site.privacyPolicyValidated,
   },
 } as const satisfies Record<string, SitePage>;
