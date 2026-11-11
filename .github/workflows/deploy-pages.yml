@@ -33,14 +33,11 @@ jobs:
       - name: Lint, tipos e testes
         run: npm run lint && npm run typecheck && npm test
 
-      # No Pages de projeto o site fica em /<repositório>/. Com domínio próprio,
-      # trocar BASE_PATH para "/" e SITE_URL para o domínio.
-      - name: Endereço do site
+      # O domínio próprio publica na raiz do host, sem o prefixo do repositório.
+      - name: Endereço do site no domínio próprio
         run: |
-          owner="${GITHUB_REPOSITORY_OWNER,,}"
-          repo="${GITHUB_REPOSITORY#*/}"
-          echo "BASE_PATH=/${repo}/" >> "$GITHUB_ENV"
-          echo "SITE_URL=https://${owner}.github.io/${repo}" >> "$GITHUB_ENV"
+          echo "BASE_PATH=/" >> "$GITHUB_ENV"
+          echo "SITE_URL=https://creditoefomento.topsitebr.com.br" >> "$GITHUB_ENV"
 
       - name: Build com pré-renderização
         run: npm run build
